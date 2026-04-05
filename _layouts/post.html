@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<article>
+  <h1>{{ page.title }}</h1>
+  <p class="post-meta">Published on {{ page.date | date: "%B %d, %Y" }} {% if page.categories %} | {{ page.categories | join: ", " }}{% endif %}</p>
+
+  <div class="ad-slot">Ad Space - Google AdSense</div>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <div class="ad-slot">Ad Space - Google AdSense</div>
+
+  <div style="background: #fae8ff; border: 2px solid #a21caf; border-radius: 12px; padding: 25px; margin: 30px 0; text-align: center;">
+    <h3 style="color: #86198f; margin-top: 0;">Stay Organized as a Parent</h3>
+    <p style="color: #555; margin-bottom: 15px;">Keep your family on track with our beautifully designed Notion templates.</p>
+    <a href="https://smarttemplatesell.gumroad.com/l/habit-tracker" target="_blank" style="display: inline-block; background: #86198f; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; margin: 5px;">Family Habit Tracker - $5.99</a>
+    <a href="https://smarttemplatesell.gumroad.com/l/budget-planner" target="_blank" style="display: inline-block; background: #a21caf; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; margin: 5px;">Family Budget Planner - $7.99</a>
+  </div>
+</article>
