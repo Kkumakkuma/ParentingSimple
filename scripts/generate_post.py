@@ -225,7 +225,12 @@ description: "{title} - Practical parenting tips and advice for raising happy, h
     print(f"Post saved: {filepath}")
     return filepath, filename
 
-
 if __name__ == '__main__':
-    filepath, filename = create_post()
+    # Every 5th post: generate a Gumroad promo post
+    from promo_post import should_write_promo, create_promo_post
+    if should_write_promo():
+        print("Generating promotional post...")
+        filepath, filename = create_promo_post()
+    else:
+        filepath, filename = create_post()
     print(f"Done! Post generated: {filename}")
