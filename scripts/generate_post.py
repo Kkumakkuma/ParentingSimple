@@ -1,147 +1,220 @@
 """
-ParentingSimple Auto Post Generator
-Generates SEO-optimized parenting articles using OpenAI GPT API
-and commits them to the blog repository.
+ParentingSimple Auto Post Generator v2
+- GPT generates unique long-tail keyword topics dynamically
+- used_topics.json prevents any duplicate content
+- High-CPC keywords + FAQ sections for Google featured snippets
+- Internal linking to boost SEO
 """
 
 from openai import OpenAI
 import datetime
+import json
 import os
 import random
 import re
 
-# High CPC keyword categories for parenting
-TOPIC_POOLS = {
-    "newborn": [
-        "How to Get Your Baby to Sleep Through the Night",
-        "Newborn Feeding Schedule: Breastfeeding vs Formula in {year}",
-        "{number} Essential Items Every New Parent Needs",
-        "How to Soothe a Colicky Baby: Proven Methods",
-        "Baby Sleep Training Methods Compared: Which One Works",
-        "First-Time Parent Survival Guide for the First {number} Weeks",
-        "How to Create the Perfect Nursery on a Budget",
-        "Signs Your Newborn Is Getting Enough Milk",
-        "Baby Milestones: What to Expect in the First Year",
-        "How to Establish a Bedtime Routine for Your Baby",
-    ],
-    "toddler": [
-        "Fun Educational Activities for Toddlers at Home",
-        "How to Handle Tantrums Without Losing Your Mind",
-        "Potty Training Tips That Actually Work in {year}",
-        "{number} Screen-Free Activities to Keep Toddlers Busy",
-        "Best Educational Toys for Toddlers in {year}",
-        "How to Get Your Picky Toddler to Eat Vegetables",
-        "Toddler Speech Development: When to Worry",
-        "{number} Easy Sensory Play Ideas for Toddlers",
-        "How to Transition Your Toddler from Crib to Bed",
-        "Gentle Discipline Techniques for Toddlers",
-    ],
-    "school_age": [
-        "Screen Time Rules for Kids: A Parent's Guide {year}",
-        "How to Help Your Child Make Friends at School",
-        "Best Educational Apps for Kids in {year}",
-        "{number} Ways to Make Homework Less Stressful",
-        "How to Build Your Child's Confidence and Self-Esteem",
-        "After-School Routine Ideas That Reduce Stress",
-        "How to Talk to Your Kids About Bullying",
-        "Best Books for Kids Ages {number} to 10",
-        "How to Encourage a Growth Mindset in Your Child",
-        "Fun Science Experiments to Do at Home with Kids",
-    ],
-    "teen": [
-        "How to Talk to Your Teenager About Hard Topics",
-        "Setting Boundaries with Teens Without Causing Conflict",
-        "{number} Ways to Stay Connected with Your Teenager",
-        "Social Media Safety Tips Every Parent Should Know in {year}",
-        "How to Help Your Teen Deal with Peer Pressure",
-        "Teen Mental Health: Warning Signs Parents Should Watch For",
-        "How to Prepare Your Teenager for College and Beyond",
-        "Teaching Teenagers About Money and Financial Responsibility",
-        "How to Handle Teen Attitude with Grace and Patience",
-        "Helping Your Teen Choose the Right Extracurricular Activities",
-    ],
-    "family_activities": [
-        "{number} Fun Family Activities for the Weekend",
-        "Budget-Friendly Family Vacation Ideas in {year}",
-        "How to Start a Family Game Night Tradition",
-        "Best Outdoor Activities for Families with Kids",
-        "{number} Creative Rainy Day Activities for the Whole Family",
-        "How to Plan the Perfect Family Movie Night",
-        "Family Volunteer Ideas That Teach Kids Compassion",
-        "Easy Family Meal Prep Ideas for Busy Weeknights",
-        "How to Create Meaningful Family Traditions",
-        "Best Board Games for Family Night in {year}",
-    ],
-    "parenting_tips": [
-        "Positive Parenting Techniques That Actually Work",
-        "How to Stop Yelling at Your Kids: A Step-by-Step Guide",
-        "{number} Morning Routine Hacks for Busy Parents",
-        "How to Balance Work and Family Life in {year}",
-        "Co-Parenting Tips for a Healthier Family Dynamic",
-        "Self-Care Ideas for Exhausted Parents",
-        "How to Set Effective Rules and Consequences for Kids",
-        "Minimalist Parenting: Doing More with Less",
-        "How to Raise Kind and Empathetic Children",
-        "{number} Parenting Books Every Mom and Dad Should Read",
-    ],
-    "child_health": [
-        "Healthy Lunch Ideas for Kids That They Will Actually Eat",
-        "How to Boost Your Child's Immune System Naturally",
-        "{number} Healthy Snack Ideas for Kids After School",
-        "How Much Sleep Does Your Child Really Need in {year}",
-        "Kids and Sugar: How to Reduce Sugar Intake Without Battles",
-        "How to Get Your Kids to Exercise and Stay Active",
-        "Common Childhood Allergies Every Parent Should Know About",
-        "Mental Health Activities for Kids: Building Resilience Early",
-        "How to Create a Healthy Meal Plan for Your Family",
-        "Best Vitamins and Supplements for Kids in {year}",
-    ],
-}
+BLOG_NAME = "ParentingSimple"
+BLOG_NICHE = "parenting"
+BLOG_DESCRIPTION = "Practical parenting tips and advice for raising happy, healthy kids."
 
-SYSTEM_PROMPT = """You are an expert parenting writer for a blog called ParentingSimple.
-Write SEO-optimized, informative, and engaging blog posts about parenting and child care.
+CATEGORIES = [
+    "newborn",     "toddler",     "school-age",     "teen",
+    "family-activities",     "parenting-tips",     "child-health",     "education",
+    "discipline",     "family-budget",     "baby-gear",     "screen-time",
+    "child-development",     "family-travel",     "homework-help",
+]
 
-Rules:
-- Write in a warm, supportive, and conversational tone
-- Use short paragraphs (2-3 sentences max)
-- Include practical, actionable advice parents can use today
-- Use headers (##) to break up sections
-- Include bullet points and numbered lists where appropriate
-- Write between 1200-1800 words
-- Naturally include the main keyword 3-5 times
-- Include a compelling introduction that hooks the reader
-- End with a clear conclusion/call-to-action
-- Do NOT include any AI disclaimers or mentions of being AI-generated
-- Write as if you are an experienced parent and child development expert sharing knowledge
-- Make content evergreen where possible
-- Include specific examples and real-life scenarios
-- Be encouraging and non-judgmental
-- Do NOT use markdown title (# Title) - just start with the content
+SYSTEM_PROMPT = """You are an expert parenting writer for ParentingSimple.
+You write SEO-optimized, highly informative articles that rank on Google.
+
+Writing rules:
+- Friendly, conversational but authoritative tone (like a trusted financial advisor friend)
+- Short paragraphs (2-3 sentences max)
+- Use ## for section headers (H2) and ### for subsections (H3)
+- Include bullet points and numbered lists
+- Write 1500-2200 words
+- Naturally weave the main keyword throughout (4-6 times)
+- Start with a hook that addresses the reader's pain point
+- Include specific numbers, percentages, and real examples
+- End with a clear actionable takeaway
+- Do NOT use markdown title (# Title) - start directly with content
+- Do NOT include AI disclaimers
+- Write as a certified child development specialist sharing expertise
+
+SEO rules:
+- Include a "Frequently Asked Questions" section at the end with 3-4 Q&As using ### for each question
+- Use power words in subheadings (Ultimate, Essential, Proven, Complete)
+- Write in second person ("you") to engage readers
+- Include comparison elements (vs, compared to, better than)
+- Add year references where relevant for freshness
 """
 
 
-def pick_topic():
-    """Select a random topic from the pools."""
-    year = datetime.datetime.now().year
-    number = random.choice([3, 5, 7, 10, 12, 15])
-    category = random.choice(list(TOPIC_POOLS.keys()))
-    title_template = random.choice(TOPIC_POOLS[category])
-    title = title_template.format(year=year, number=number)
-    return title, category
+def get_repo_root():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    return os.path.dirname(script_dir)
 
 
-def generate_post_content(title, category):
-    """Generate a blog post using OpenAI GPT API."""
+def load_used_topics():
+    """Load previously used topic slugs."""
+    filepath = os.path.join(get_repo_root(), "scripts", "used_topics.json")
+    if os.path.exists(filepath):
+        with open(filepath, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return []
+
+
+def save_used_topics(topics):
+    filepath = os.path.join(get_repo_root(), "scripts", "used_topics.json")
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(topics, f, indent=2)
+
+
+def get_existing_slugs():
+    """Get all existing post slugs from _posts/."""
+    posts_dir = os.path.join(get_repo_root(), "_posts")
+    slugs = set()
+    if os.path.exists(posts_dir):
+        for filename in os.listdir(posts_dir):
+            if filename.endswith(".md"):
+                # Remove date prefix and .md suffix
+                slug = re.sub(r"^\d{4}-\d{2}-\d{2}-", "", filename[:-3])
+                # Normalize: remove trailing random numbers
+                slug = re.sub(r"-\d{2,3}$", "", slug)
+                slugs.add(slug)
+    return slugs
+
+
+def get_recent_titles(limit=10):
+    """Get recent post titles for internal linking context."""
+    posts_dir = os.path.join(get_repo_root(), "_posts")
+    titles = []
+    if os.path.exists(posts_dir):
+        files = sorted(os.listdir(posts_dir), reverse=True)
+        for filename in files[:limit]:
+            if filename.endswith(".md"):
+                filepath = os.path.join(posts_dir, filename)
+                with open(filepath, "r", encoding="utf-8") as f:
+                    for line in f:
+                        if line.startswith("title:"):
+                            title = line.split(":", 1)[1].strip().strip('"')
+                            titles.append(title)
+                            break
+    return titles
+
+
+def slugify(title):
+    slug = title.lower()
+    slug = re.sub(r"[^a-z0-9\s-]", "", slug)
+    slug = re.sub(r"[\s]+", "-", slug)
+    slug = re.sub(r"-+", "-", slug)
+    return slug.strip("-")
+
+
+def generate_unique_topic(used_topics, existing_slugs):
+    """Ask GPT to generate a unique, high-CPC long-tail keyword topic."""
     client = OpenAI()
+    year = datetime.datetime.now().year
+    category = random.choice(CATEGORIES)
+
+    used_list = "\n".join(f"- {t}" for t in used_topics[-50:]) if used_topics else "(none yet)"
 
     response = client.chat.completions.create(
         model="gpt-4o-mini",
-        max_tokens=4000,
+        max_tokens=200,
+        temperature=1.0,
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    f"You generate blog post titles for a {BLOG_NICHE} blog. "
+                    "Generate exactly ONE unique, SEO-optimized blog title.\n\n"
+                    "Requirements:\n"
+                    "- Long-tail keyword (5-12 words) that people actually search on Google\n"
+                    "- High commercial intent (topics where advertisers pay high CPC)\n"
+                    "- Specific and actionable (not generic)\n"
+                    "- Include numbers, year, or power words when natural\n"
+                    f"- Relevant to {year}\n"
+                    "- MUST be completely different from the used titles below\n"
+                    "- DO NOT just rephrase an existing title\n\n"
+                    "Reply with ONLY the title, nothing else."
+                ),
+            },
+            {
+                "role": "user",
+                "content": (
+                    f"Category: {category.replace('-', ' ')}\n\n"
+                    f"Already used titles (DO NOT repeat or rephrase these):\n{used_list}\n\n"
+                    "Generate one new unique title:"
+                ),
+            },
+        ],
+    )
+
+    title = response.choices[0].message.content.strip().strip('"').strip("'")
+    slug = slugify(title)
+
+    # Verify it's actually unique
+    norm_slug = re.sub(r"-\d{2,3}$", "", slug)
+    if norm_slug in existing_slugs or norm_slug in [slugify(t) for t in used_topics[-100:]]:
+        # Retry once with stronger instruction
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            max_tokens=200,
+            temperature=1.2,
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        f"Generate a COMPLETELY NEW and UNIQUE {BLOG_NICHE} blog title. "
+                        f"Category: {category.replace('-', ' ')}. "
+                        f"This MUST NOT overlap with any existing content. "
+                        f"Think of a specific subtopic or angle that hasn't been covered. "
+                        f"Use long-tail keywords (6-12 words). Year: {year}. "
+                        "Reply with ONLY the title."
+                    ),
+                },
+                {"role": "user", "content": "Generate:"},
+            ],
+        )
+        title = response.choices[0].message.content.strip().strip('"').strip("'")
+        slug = slugify(title)
+
+    return title, category, slug
+
+
+def generate_post_content(title, category, recent_titles):
+    """Generate high-quality blog post with FAQ and internal linking."""
+    client = OpenAI()
+
+    internal_links_hint = ""
+    if recent_titles:
+        links = "\n".join(f"- {t}" for t in recent_titles[:5])
+        internal_links_hint = (
+            f"\n\nFor internal linking, naturally reference 1-2 of these related articles "
+            f"where relevant (use the exact title in a mention like "
+            f"'as we covered in [Article Title]'):\n{links}"
+        )
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        max_tokens=5000,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {
                 "role": "user",
-                "content": f"Write a comprehensive blog post with the title: \"{title}\"\n\nCategory: {category.replace('_', ' ')}\n\nRemember to write 1200-1800 words, use ## for section headers, and make it SEO-friendly.",
+                "content": (
+                    f'Write a comprehensive blog post titled: "{title}"\n\n'
+                    f"Category: {category.replace('-', ' ')}\n\n"
+                    "Structure:\n"
+                    "1. Hook intro (address the reader's problem)\n"
+                    "2. 4-6 detailed sections with ## headers\n"
+                    "3. Practical tips with specific examples\n"
+                    "4. FAQ section (## Frequently Asked Questions) with 3-4 ### questions\n"
+                    "5. Brief conclusion with call-to-action\n\n"
+                    "Write 1500-2200 words. Make it genuinely helpful and unique."
+                    f"{internal_links_hint}"
+                ),
             },
         ],
     )
@@ -149,85 +222,75 @@ def generate_post_content(title, category):
     return response.choices[0].message.content
 
 
-def slugify(title):
-    """Convert title to URL-friendly slug."""
-    slug = title.lower()
-    slug = re.sub(r'[^a-z0-9\s-]', '', slug)
-    slug = re.sub(r'[\s]+', '-', slug)
-    slug = re.sub(r'-+', '-', slug)
-    slug = slug.strip('-')
-    return slug
-
-
-def get_repo_root():
-    """Get the repository root directory."""
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    return os.path.dirname(script_dir)
-
-
-def get_existing_titles():
-    """Get titles of existing posts to avoid duplicates."""
-    posts_dir = os.path.join(get_repo_root(), '_posts')
-    titles = set()
-    if os.path.exists(posts_dir):
-        for filename in os.listdir(posts_dir):
-            if filename.endswith('.md'):
-                title_part = filename[11:-3]
-                titles.add(title_part)
-    return titles
+def generate_meta_description(title):
+    """Generate a unique, compelling meta description."""
+    client = OpenAI()
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        max_tokens=100,
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "Write a compelling meta description for a blog post. "
+                    "150-160 characters max. Include the main keyword. "
+                    "Add a call-to-action. Reply with ONLY the description."
+                ),
+            },
+            {"role": "user", "content": f"Title: {title}"},
+        ],
+    )
+    desc = response.choices[0].message.content.strip().strip('"')
+    return desc[:160]
 
 
 def create_post():
-    """Generate and save a new blog post."""
-    existing = get_existing_titles()
+    """Generate and save a new unique blog post."""
+    used_topics = load_used_topics()
+    existing_slugs = get_existing_slugs()
+    recent_titles = get_recent_titles(10)
 
-    # Try up to 10 times to find a non-duplicate topic
-    for _ in range(10):
-        title, category = pick_topic()
-        slug = slugify(title)
-        if slug not in existing:
-            break
-    else:
-        # If all attempts hit duplicates, add a random suffix
-        title, category = pick_topic()
-        slug = slugify(title) + f"-{random.randint(100, 999)}"
-
+    title, category, slug = generate_unique_topic(used_topics, existing_slugs)
     print(f"Generating post: {title}")
     print(f"Category: {category}")
 
-    content = generate_post_content(title, category)
+    content = generate_post_content(title, category, recent_titles)
+    description = generate_meta_description(title)
 
-    # Create the post file
     today = datetime.datetime.now()
-    date_str = today.strftime('%Y-%m-%d')
+    date_str = today.strftime("%Y-%m-%d")
     filename = f"{date_str}-{slug}.md"
 
-    posts_dir = os.path.join(get_repo_root(), '_posts')
+    posts_dir = os.path.join(get_repo_root(), "_posts")
     os.makedirs(posts_dir, exist_ok=True)
-
     filepath = os.path.join(posts_dir, filename)
 
-    # Create frontmatter
     frontmatter = f"""---
 layout: post
 title: "{title}"
 date: {today.strftime('%Y-%m-%d %H:%M:%S')} +0000
-categories: [{category.replace('_', '-')}]
-description: "{title} - Practical parenting tips and advice for raising happy, healthy kids."
+categories: [{category}]
+description: "{description}"
+tags: [{category}, {BLOG_NICHE.replace(' ', '-')}, {today.year}]
 ---
 
 {content}
 """
 
-    with open(filepath, 'w', encoding='utf-8') as f:
+    with open(filepath, "w", encoding="utf-8") as f:
         f.write(frontmatter)
+
+    # Track used topic
+    used_topics.append(title)
+    save_used_topics(used_topics)
 
     print(f"Post saved: {filepath}")
     return filepath, filename
 
-if __name__ == '__main__':
-    # Every 5th post: generate a Gumroad promo post
+
+if __name__ == "__main__":
     from promo_post import should_write_promo, create_promo_post
+
     if should_write_promo():
         print("Generating promotional post...")
         filepath, filename = create_promo_post()
