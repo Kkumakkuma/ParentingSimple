@@ -1,27 +1,39 @@
 ---
 layout: default
-title: About ParentingSimple
+title: "About ParentingSimple"
 permalink: /about/
-description: "ParentingSimple provides practical, no-nonsense parenting advice for every stage of your child's life."
+description: "About Kkuma Park, the writer behind ParentingSimple."
 ---
 
 # About ParentingSimple
 
-ParentingSimple is your trusted resource for straightforward parenting advice that actually works in the real world.
+## Who writes here
 
-We cover every stage from newborns to teenagers, with tips you can start using today to build a happier, healthier family.
+My name is **Kkuma Park**. I'm an independent writer and developer based in Seoul, South Korea. I've spent more than a decade in IT, built a handful of small software products, and along the way accumulated a list of personal experiments, mistakes, and hard-won notes that turned into this blog.
 
-## What We Cover
+I have a toddler and a newborn, so sleep is theoretical and my patience is rationed. ParentingSimple is what I actually tried this week, which expert advice turned out to be useless in my house, and what quietly saved my sanity.
 
-- **Newborn Care** - Sleep training, feeding, and surviving the first year
-- **Toddler Life** - Tantrums, potty training, and fun learning activities
-- **School-Age Kids** - Homework help, screen time rules, and building confidence
-- **Teenagers** - Communication, independence, and navigating the tough years
-- **Family Activities** - Quality time ideas for every budget and schedule
-- **Child Health** - Nutrition, fitness, and wellness for growing kids
+## What ParentingSimple is for
 
-## Our Mission
+ParentingSimple is my working notebook on **parenting**. Every article here exists because I needed the answer myself at some point and couldn't find a version I trusted.
 
-Parenting doesn't come with a manual, but it doesn't have to be overwhelming. Our mission is to share practical, evidence-based advice in a friendly and judgment-free way so every parent can feel confident in their choices.
+I try to follow three rules on this site:
 
-New articles are published daily. Subscribe to our [RSS feed](/feed.xml) to never miss a post.
+1. **Write from experience, not summary.** If I haven't actually done it, I won't pretend I have.
+2. **Show the numbers.** Where real data, tests, or costs are useful, I include them.
+3. **Update when I'm wrong.** If I learn that an earlier post was inaccurate, I fix the post and add a note.
+
+## How I run this blog
+
+- Posts are published on a regular schedule.
+- I use AI tools (such as ChatGPT) to help with drafting structure and outlines, but every published post is reviewed, edited, and fact-checked by me before it goes live.
+- Affiliate links, when used, are marked. I only link to products I have actually used or would genuinely recommend.
+- Ads on this site come from Google AdSense once my site is approved. Ads help keep the site free to read.
+
+## Get in touch
+
+Questions, corrections, feedback, or collaboration ideas are welcome.
+
+**Email:** [kkumaspark@gmail.com](mailto:kkumaspark@gmail.com)
+
+For privacy, legal, and data practices, please see the [Privacy Policy](/privacy-policy/), [Terms](/terms/), and [Disclaimer](/disclaimer/).
