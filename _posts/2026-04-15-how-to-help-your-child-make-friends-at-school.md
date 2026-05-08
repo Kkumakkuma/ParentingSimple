@@ -6,6 +6,8 @@ categories: [school-age]
 description: "How to Help Your Child Make Friends at School - Practical parenting tips and advice for raising happy, healthy kids."
 ---
 
+![How to Help Your Child Make Friends at School](/ParentingSimple/assets/pin-images/2026-04-15-how-to-help-your-child-make-friends-at-school.png)
+
 As a parent, watching your child navigate the world of friendships can be a joy and a challenge. School is a significant social environment where kids learn not only about academics but also about how to relate to others. Making friends is a skill that helps them build confidence, enhance their communication abilities, and develop emotional intelligence. So, how can you help your child make friends at school? Let's dive into some strategies that can make a meaningful difference.
 
 ## Understanding the Importance of Friendships

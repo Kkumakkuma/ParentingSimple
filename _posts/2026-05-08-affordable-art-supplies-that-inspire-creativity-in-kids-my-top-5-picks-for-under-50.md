@@ -7,6 +7,8 @@ description: "Discover my top 5 affordable art supplies for kids under $50 that 
 tags: [school-age, parenting, 2026]
 ---
 
+![Affordable Art Supplies That Inspire Creativity in Kids: My Top 5 Picks for Under $50](/ParentingSimple/assets/pin-images/2026-05-08-affordable-art-supplies-that-inspire-creativity-in-kids-my-top-5-picks-for-under-50.png)
+
 My journey to find affordable art supplies that inspire creativity in kids began last summer when I impulsively spent over $120 on various craft items during a single shopping trip. The thrill quickly faded as I realized most items just sat in the corner of my living room, untouched. This misstep forced me to evaluate what makes art supplies truly engaging for kids while being budget-friendly. I've tested numerous products over the last few months, focusing on affordability, quality, and their ability to spark creativity. After countless hours of experimentation, here are my top five picks for art supplies that inspire creativity in kids, each priced under $50.
 
 ## How I Researched This

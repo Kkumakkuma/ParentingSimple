@@ -6,6 +6,8 @@ categories: [toddler]
 description: "3 Easy Sensory Play Ideas for Toddlers - Practical parenting tips and advice for raising happy, healthy kids."
 ---
 
+![3 Easy Sensory Play Ideas for Toddlers](/ParentingSimple/assets/pin-images/2026-04-12-3-easy-sensory-play-ideas-for-toddlers.png)
+
 As a parent, you know how quickly toddlers can get bored. Finding ways to engage your little ones can often feel like a challenge. But did you know that sensory play can help enhance your toddler's development while keeping them entertained? Sensory play stimulates a child's senses, encouraging exploration and creativity. It’s not only fun but also essential for cognitive growth and motor skills. In this post, I’ll share three easy sensory play ideas for toddlers that are not just simple to set up but also safe and engaging.
 
 ## What is Sensory Play?

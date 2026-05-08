@@ -6,6 +6,8 @@ categories: [child-health]
 description: "10 Healthy Snack Ideas for Kids After School - Practical parenting tips and advice for raising happy, healthy kids."
 ---
 
+![10 Healthy Snack Ideas for Kids After School](/ParentingSimple/assets/pin-images/2026-04-07-10-healthy-snack-ideas-for-kids-after-school.png)
+
 As the school day winds down and your little ones come home buzzing with energy, you may find yourself wondering what to serve for an after-school snack. At this time of day, they need something healthy yet satisfying enough to keep them fueled until dinner. The good news is that there are countless delicious and nutritious options that can delight their taste buds and support their growing bodies.
 
 In this post, we’ll explore ten healthy snack ideas that your kids will love. These snacks are not only easy to prepare, but they also offer significant nutritional benefits. So let’s dive in!

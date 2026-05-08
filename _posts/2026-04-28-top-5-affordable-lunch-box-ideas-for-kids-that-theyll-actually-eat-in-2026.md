@@ -7,6 +7,8 @@ description: "Discover the top 5 affordable lunch box ideas for kids that they'l
 tags: [school-age, parenting, 2026]
 ---
 
+![Top 5 Affordable Lunch Box Ideas for Kids That They'll Actually Eat in 2026](/ParentingSimple/assets/pin-images/2026-04-28-top-5-affordable-lunch-box-ideas-for-kids-that-theyll-actually-eat-in-2026.png)
+
 When I wandered the grocery aisles last month, I noticed that a simple weekly lunch box plan could save me around $40—money better spent on weekend family outings than on overpriced cafeteria lunches. With my two kids, aged 6 and 8, I’ve tested dozens of lunch ideas, only to find many ended up untouched by the time they came home. After trying various brands and recipes, I’ve compiled five affordable lunch box ideas for kids that they’ll actually eat in 2026.
 
 ## How I Researched This

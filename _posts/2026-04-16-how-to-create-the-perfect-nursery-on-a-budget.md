@@ -6,6 +6,8 @@ categories: [newborn]
 description: "How to Create the Perfect Nursery on a Budget - Practical parenting tips and advice for raising happy, healthy kids."
 ---
 
+![How to Create the Perfect Nursery on a Budget](/ParentingSimple/assets/pin-images/2026-04-16-how-to-create-the-perfect-nursery-on-a-budget.png)
+
 Creating a loving and functional nursery for your newborn is one of the most special tasks awaiting new parents. However, the thought of costs can often be overwhelming. The good news? You can create the perfect nursery on a budget without sacrificing style or comfort. Let’s dive into practical steps and budget-friendly tips that allow you to design a beautiful space for your newest family member.
 
 ## Planning Your Budget

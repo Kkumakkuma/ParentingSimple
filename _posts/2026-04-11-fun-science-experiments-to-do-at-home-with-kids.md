@@ -6,6 +6,8 @@ categories: [school-age]
 description: "Fun Science Experiments to Do at Home with Kids - Practical parenting tips and advice for raising happy, healthy kids."
 ---
 
+![Fun Science Experiments to Do at Home with Kids](/ParentingSimple/assets/pin-images/2026-04-11-fun-science-experiments-to-do-at-home-with-kids.png)
+
 As a parent, I know how exciting and rewarding it can be to watch our children’s eyes light up with curiosity. Science has a way of engaging kids like nothing else can! Whether it’s observing how colors mix or watching a volcano erupt, hands-on experiments can transform learning into an adventure. In today's blog post, we’ll explore fun science experiments to do at home with kids that will keep them entertained, educated, and engaged. 
 
 With just a few simple supplies commonly found around the house, these experiments will not only nurture your child’s love for science but also provide opportunities for you to bond and create lasting memories together. 

@@ -6,6 +6,8 @@ categories: [newborn]
 description: "How to Establish a Bedtime Routine for Your Baby - Practical parenting tips and advice for raising happy, healthy kids."
 ---
 
+![How to Establish a Bedtime Routine for Your Baby](/ParentingSimple/assets/pin-images/2026-04-07-how-to-establish-a-bedtime-routine-for-your-baby.png)
+
 Establishing a bedtime routine for your baby can seem daunting at first, but it's one of the most rewarding gifts you can give both your little one and yourself. A consistent bedtime routine creates a sense of stability and security, which is crucial for your baby’s development. In this post, we’ll walk you through practical steps to establish a calming bedtime routine that helps your baby (and you!) wind down for a peaceful night’s sleep.
 
 ## Why a Bedtime Routine is Important

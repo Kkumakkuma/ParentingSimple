@@ -7,6 +7,8 @@ description: "Discover the effectiveness of using chores as discipline for kids 
 tags: [discipline, parenting, 2026]
 ---
 
+![Is Using Chores as Discipline Effective for Kids in 2026? My 3-Month Review](/ParentingSimple/assets/pin-images/2026-05-04-is-using-chores-as-discipline-effective-for-kids-in-2026-my-3-month-review.png)
+
 I recall a particularly exhausting Saturday morning in January 2026 when my 10-year-old daughter, Jiwoo, flat-out refused to clean her room. Frustrated, I decided to impose a new strategy—using chores as a form of discipline. I had read in various parenting forums that chores could teach responsibility and serve as a form of correction. What I hadn't anticipated was the mental gymnastics involved—not just for her, but for me as well. After a month tangled in this experiment, I found myself wondering whether I was doing more harm than good. Did it actually help her understand the responsibilities I wanted her to grasp? 
 
 In March, I spent three months researching, experimenting, and reflecting on using chores as discipline for children. You might be wondering if this method works and how effective it truly is in the context of today's parenting challenges. Let’s break down my findings, experiences, and some unconventional insights.

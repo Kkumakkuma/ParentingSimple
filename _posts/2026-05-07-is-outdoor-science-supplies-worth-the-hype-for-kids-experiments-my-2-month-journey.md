@@ -7,6 +7,8 @@ description: "Discover if Outdoor Science Supplies live up to the hype for kids'
 tags: [family-activities, parenting, 2026]
 ---
 
+![Is Outdoor Science Supplies Worth the Hype for Kids' Experiments? My 2-Month Journey](/ParentingSimple/assets/pin-images/2026-05-07-is-outdoor-science-supplies-worth-the-hype-for-kids-experiments-my-2-month-journey.png)
+
 I remember the moment clearly — it was April 2022, and I found myself browsing an online store that specialized in outdoor science supplies for kids. I was particularly intrigued by a $75 science kit from National Geographic, which promised an exciting array of outdoor experiments. As a parent trying to create engaging learning experiences for my children, I spent the next two months actively testing various outdoor science supplies. My findings might surprise you! 
 
 ## How I Researched This

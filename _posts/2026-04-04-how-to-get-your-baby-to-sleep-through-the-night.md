@@ -6,6 +6,8 @@ categories: [newborn]
 description: "How to Get Your Baby to Sleep Through the Night - Practical parenting tips and advice for raising happy, healthy kids."
 ---
 
+![How to Get Your Baby to Sleep Through the Night](/ParentingSimple/assets/pin-images/2026-04-04-how-to-get-your-baby-to-sleep-through-the-night.png)
+
 Every new parent dreams of the day their baby finally sleeps through the night. The good news is that with the right approach, most babies can learn to sleep for longer stretches by around 4 to 6 months of age.
 
 The key is understanding your baby's sleep needs and creating an environment that supports healthy sleep habits. Let's walk through exactly how to make that happen.

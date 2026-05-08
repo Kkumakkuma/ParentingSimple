@@ -7,6 +7,8 @@ description: "Plan fun, educational activities for your kids with our Notion pla
 tags: [product-review, parenting]
 ---
 
+![Combatting Inactivity: Tips for Planning Exciting, Offline Activities for Kids in 2026](/ParentingSimple/assets/pin-images/2026-04-26-combatting-inactivity-tips-for-planning-exciting-offline-activities-for-kids-in-2026.png)
+
 # Combatting Inactivity: Tips for Planning Exciting, Offline Activities for Kids in 2026
 
 In today’s digital age, many parents grapple with one common concern: how to combat inactivity and screen time among their children. As technology continues to absorb our little ones' attention, it's increasingly crucial to provide engaging offline activities that stimulate their creativity, encourage physical movement, and promote healthy social interactions.

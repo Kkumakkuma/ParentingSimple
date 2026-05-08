@@ -7,6 +7,8 @@ description: "Discover the effectiveness of discipline through positive reinforc
 tags: [discipline, parenting, 2026]
 ---
 
+![Is Discipline Through Positive Reinforcement Effective for Kids in 2026? My 6-Month Trial](/ParentingSimple/assets/pin-images/2026-05-01-is-discipline-through-positive-reinforcement-effective-for-kids-in-2026-my-6-month-trial.png)
+
 Starting January this year, I embarked on a six-month experiment with a positive reinforcement program to guide my 5-year-old son toward better behavior. I decided to invest in a comprehensive reward system, initially spending around $200 to set it up. This trial was not just about managing discipline; I wanted to understand if positive reinforcement could produce tangible, long-term changes in behavior. Looking back, I realize that understanding what worked and what didn’t truly shaped my approach to parenting this year. 
 
 ## How I Researched This
